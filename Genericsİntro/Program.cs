@@ -9,10 +9,7 @@ namespace Genericsİntro
             MyList<string> isimler = new MyList<string>();
             isimler.Add("Musa");
             isimler.Add("Elif");
-            foreach ( MyList a in isimler)
-            {
-
-            }
+            
 
             Console.WriteLine("Hello World!");
         }
