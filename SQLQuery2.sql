@@ -28,9 +28,22 @@ from Products inner join Categories
 on Products.CategoryID = Categories.CategoryID
 
 --DTO Data Tranformation object
-select * from Products p left join [Order Details] od
-on p.ProductID = od.ProductID
+select * from Products p inner join [Order Details] od
+on p.ProductID = od.ProductID 
+inner join Orders on  Orders.OrderId = od.OrderId
 
 select*from Customers c left join Orders o 
 on c.CustomerID = o.CustomerID
 where o.CustomerID is null
+
+Select p.ProductName  ÜrünAdı, 
+sum(od.Quantity*od.UnitPrice) KazanılanToplamMiktar  
+From Products p inner join [Order Details] od on p.ProductID = od.ProductID inner join Orders o on o.OrderID = od.OrderID
+group by p.ProductName;
+
+ select Products.ProductName UrunAdi, 
+sum([Order Details].UnitPrice * [Order Details].Quantity) KazanilanPara 
+from Products inner join [Order Details]
+on Products.ProductID = [Order Details].ProductID inner join Orders
+on Orders.OrderID = [Order Details].OrderID
+group by Products.ProductName;
